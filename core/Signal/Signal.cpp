@@ -18,3 +18,7 @@ double Signal::getTime(int n) const {
 
   return time;
 }
+
+double Signal::getSampleRate() const {
+  return sampleRate;  
+}

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstddef>
 #include <vector>
 #include <cstdint>
@@ -13,4 +15,5 @@ public:
   std::size_t getSize() const;
   double getSample(int n) const;
   double getTime(int n) const;
+  double getSampleRate() const;
 };
