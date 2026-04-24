@@ -1,51 +1,54 @@
 // main.cpp
 
-// 1. Users input parameters
-// 2. Init array with size - n = SampleRate * Duration
-// 3. Create a loop over indices
-// 3.1. Determine t using the formula - t = n/SampleRate
-// 3.2. Determine the value of the sine at time t
-// 3.3. Write the received value to each element of the array
+// Stage 1: Amplitude and phase [V]
+// Stage 2: Sum of sines [*]
+// Stage 3: FFT []
+// Stage 5: STFT []
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 
 #include <cmath>
 
-using namespace std;
-
-vector<double> GenerateSignal(double sampleRate, double frequency, int duration);
+std::vector<double> GenerateSignal(double sampleRate, double frequency, double amplitude, double fractionPi, int duration);
 
 int main() {
 
-  double sampleRate, frequency;
+  double sampleRate, frequency, amplitude, fractionPi;
   int duration;
   
   // Parameters  
-  cout << "Please enter sampleRate: "; cin >> sampleRate;
-  cout << "Please enter frequency: "; cin >> frequency;
-  cout << "Please enter duration: "; cin >> duration;
+  std::cout << "Please enter sampleRate: "; std::cin >> sampleRate;
+  std::cout << "Please enter frequency: "; std::cin >> frequency;
+  std::cout << "Please enter duration: "; std::cin >> duration;
+  std::cout << "Please enter amplitude: "; std::cin >> amplitude;
+  std::cout << "Please enter phase(fraction pi): "; std::cin >> fractionPi;
+  
 
-  // sine wave generate 
-  vector<double> signal = GenerateSignal(sampleRate, frequency, duration);
+  // Sine wave generate 
+  std::vector<double> signal = GenerateSignal(sampleRate, frequency, amplitude, fractionPi, duration);
   
   for (int n = 0; n < signal.size(); n++) {
-    printf("n: %d, amplitude: %f \n", n, signal[n]);
+    std::cout << "n: " << n << " Amplitude: " << signal[n] << '\n';
   }
 
   return 0;
 }
 
 // Generate a signal based on sampleRate, frequency and duration
-vector<double> GenerateSignal(double sampleRate, double frequency, int duration) {
-
-  int signalSize = sampleRate * duration;
+std::vector<double> GenerateSignal(double sampleRate, double frequency,
+                                   double amplitude, double fractionPi, int duration) {
   
-  vector<double> signal(signalSize);
+  int signalSize = sampleRate * duration;
+
+  double phase = fractionPi * M_PI;
+  
+  std::vector<double> signal(signalSize);
 
   for (int n = 0; n < signalSize; n++) {
-    signal[n] = sin(2.0 * M_PI * frequency * n / sampleRate);
+    signal[n] = amplitude *  sin((2.0 * M_PI * frequency * n / sampleRate) + phase);
   }
   
   return signal;
