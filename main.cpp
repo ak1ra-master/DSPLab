@@ -12,7 +12,7 @@
 
 #include <cmath>
 
-std::vector<double> GenerateSignal(double sampleRate, double frequency, double amplitude, double fractionPi, int duration);
+#include "core/Generators/SineGenerator.h"
 
 int main() {
 
@@ -25,31 +25,15 @@ int main() {
   std::cout << "Please enter duration: "; std::cin >> duration;
   std::cout << "Please enter amplitude: "; std::cin >> amplitude;
   std::cout << "Please enter phase(fraction pi): "; std::cin >> fractionPi;
-  
 
-  // Sine wave generate 
-  std::vector<double> signal = GenerateSignal(sampleRate, frequency, amplitude, fractionPi, duration);
-  
-  for (int n = 0; n < signal.size(); n++) {
-    std::cout << "n: " << n << " Amplitude: " << signal[n] << '\n';
+
+  SineGenerator sineGen(sampleRate, frequency, amplitude, fractionPi, duration);
+
+  Signal sineSignal = sineGen.getSignal();
+
+  for (int n = 0; n < sineSignal.getSize(); n++) {
+    std::cout << "n: " << n << " Amplitude: " << sineSignal.getSample(n) << '\n';        
   }
-
+  
   return 0;
-}
-
-// Generate a signal based on sampleRate, frequency and duration
-std::vector<double> GenerateSignal(double sampleRate, double frequency,
-                                   double amplitude, double fractionPi, int duration) {
-  
-  int signalSize = sampleRate * duration;
-
-  double phase = fractionPi * M_PI;
-  
-  std::vector<double> signal(signalSize);
-
-  for (int n = 0; n < signalSize; n++) {
-    signal[n] = amplitude *  sin((2.0 * M_PI * frequency * n / sampleRate) + phase);
-  }
-  
-  return signal;
 }
