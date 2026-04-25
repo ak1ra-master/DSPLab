@@ -4,7 +4,7 @@ CXXFLAGS=-c -Wall -O0
 TARGET=start
 OBJ_DIR=build
 
-SOURCES=$(wildcard *.cpp) $(shell find core -name "*.cpp")
+SOURCES=$(wildcard *.cpp) $(shell find core -name "*.cpp") $(shell find ui -name "*.cpp")
 
 OBJECTS=$(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
 

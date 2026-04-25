@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../Signal/Signal.h"
 #include <vector>
 
