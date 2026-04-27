@@ -11,8 +11,8 @@ private:
   Signal generatedSignal;
 
 public:
-  SineGenerator(double sampleRate, double frequency, double amplitude,
-                double fractionPi, int duration);
+  SineGenerator(double_t sampleRate, double_t frequency, double_t amplitude,
+                double_t fractionPi, size_t duration);
 
   Signal getSignal() override;
 };

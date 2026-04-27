@@ -1,8 +1,10 @@
 #include "ConsoleUI.h"
+#include <cmath>
+#include <cstddef>
 
 Signal createSineSignalFromUser() {
-  double sampleRate, frequency, amplitude, fractionPi;
-  int duration;
+  double_t sampleRate, frequency, amplitude, fractionPi;
+  size_t duration;
 
   // Parameters
   std::cout << "Please enter sampleRate: "; std::cin >> sampleRate;
@@ -14,16 +16,13 @@ Signal createSineSignalFromUser() {
   // Generate signal by user parameters
   SineGenerator ssg(sampleRate, frequency, amplitude, fractionPi, duration);
   Signal sg = ssg.getSignal();
-  std::cout << "DEBUG size: " << sg.getSize() << '\n';
-
+  
   return sg;
 }
 
 void printSignal(const Signal& signal) {
 
-  std::cout << "SIZE: " << signal.getSize() << '\n';
-  
-  for (int n = 0; n < signal.getSize(); n++) {
+  for (size_t n = 0; n < signal.getSize(); n++) {
     std::cout << "n: " << n << " Amplitude: " << signal.getSample(n) << '\n';
   }
 

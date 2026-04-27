@@ -1,14 +1,15 @@
 #include "SineGenerator.h"
+#include <cmath>
 
-SineGenerator::SineGenerator(double sampleRate, double frequency, double amplitude,
-                double fractionPi, int duration)
+SineGenerator::SineGenerator(double_t sampleRate, double_t frequency, double_t amplitude,
+			     double_t fractionPi, size_t duration)
       : generatedSignal(std::vector<double>(), 0)
   {
-    int signalSize = static_cast<int>(sampleRate * duration);
-    double phase = fractionPi * M_PI;
-    std::vector<double> data(signalSize);
+    size_t signalSize = static_cast<size_t>(sampleRate * duration);
+    double_t phase = fractionPi * M_PI;
+    std::vector<double_t> data(signalSize);
     
-    for(int n = 0; n < signalSize; n++){
+    for(size_t n = 0; n < signalSize; n++){
       data[n] = amplitude * sin((2.0 * M_PI * frequency * n/sampleRate) + phase);
     }
 

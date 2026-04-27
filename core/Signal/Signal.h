@@ -1,19 +1,20 @@
 #pragma once
 
+#include <cmath>
 #include <cstddef>
 #include <vector>
 #include <cstdint>
 
 class Signal {
 private:
-  std::vector<double> samples;
+  std::vector<double_t> samples;
   double sampleRate;
   
 public:
-  Signal(std::vector<double> &&signal, double __sampleRate__);
+  Signal(std::vector<double_t> &&signal, double_t __sampleRate__);
 
   std::size_t getSize() const;
-  double getSample(int n) const;
-  double getTime(int n) const;
+  double getSample(size_t n) const;
+  double getTime(size_t n) const;
   double getSampleRate() const;
 };
