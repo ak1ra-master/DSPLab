@@ -1,0 +1,33 @@
+# build output
+build/
+builddir/
+out/
+
+# meson
+meson-private/
+compile_commands.json
+
+# object files
+*.o
+*.obj
+
+# binaries
+*.exe
+*.out
+*.app
+
+# libraries
+*.so
+*.a
+*.dll
+
+# IDE
+.vscode/
+.idea/
+cmake-build-*/
+
+# system
+.DS_Store
+
+# logs
+*.log

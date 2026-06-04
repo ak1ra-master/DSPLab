@@ -9,8 +9,10 @@ class Signal {
 private:
   std::vector<double_t> samples;
   double sampleRate;
-  
+
 public:
+  Signal();
+      
   Signal(std::vector<double_t> &&signal, double_t __sampleRate__);
 
   std::size_t getSize() const;

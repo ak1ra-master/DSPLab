@@ -2,6 +2,11 @@
 #include <cstddef>
 #include <utility>
 
+
+Signal::Signal()
+    : samples(), sampleRate(0.0)
+{}      
+
 Signal::Signal(std::vector<double_t> &&signal, double_t __sampleRate__)
     : samples(std::move(signal)), sampleRate(__sampleRate__) {}
 
