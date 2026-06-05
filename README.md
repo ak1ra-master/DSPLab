@@ -53,7 +53,6 @@ The goal of DSPLab is to provide a compact environment for experimenting with DS
 * Meson
 * Ninja
 * Clang
-* SDL2
 * Raylib
 
 ---
@@ -82,13 +81,12 @@ The project requires:
 * Clang
 * Meson
 * Ninja
-* SDL2
 * Raylib
 
 ### Arch Linux
 
 ```bash
-sudo pacman -S meson ninja clang sdl2 raylib
+sudo pacman -S meson ninja clang raylib
 ```
 
 ### Ubuntu
@@ -99,8 +97,7 @@ sudo apt update
 sudo apt install -y \
     clang \
     meson \
-    ninja-build \
-    libsdl2-dev
+    ninja-build 
 ```
 
 Raylib may not be available in all Ubuntu repositories. If required, install it manually or build it from source.
