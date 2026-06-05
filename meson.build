@@ -19,10 +19,9 @@ sources += files(
   'ui/App.cpp'
 )
 
-sdl2_dep = dependency('sdl2', required : true)
 raylib_dep = dependency('raylib', required : true)
 
 executable('start',
   sources,
-  dependencies : [sdl2_dep, raylib_dep]
+  dependencies : [raylib_dep]
 )
